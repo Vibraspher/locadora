@@ -13,8 +13,6 @@ h1{
     color: white;
 }
 
-
-
 div.container.logo{
     margin-top: 100px;
 }
@@ -34,19 +32,11 @@ button{
 }
 
 a{
-    color: rgb(26, 122, 122);
+    color: brown;
 }
-
-hr{
-    background-color: white;
-    bottom:30px;
-    width:90%;
-}
-
-footer {
-    bottom:-1%;
-    position:absolute;
-    text-align: center;
+a:hover{
+    text-decoration: none;
+    color: black;
 }
 
 /* MEDIAS */
