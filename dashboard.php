@@ -31,36 +31,25 @@ endif;
 </head>
 <body>
 <div class="nav-side-menu">
-    <div class="brand">Olá, <?php echo $_SESSION['nome'] ?></div>
+    <div class="brand">Olá, <?php echo $_SESSION['nome'] ?> <a href="logout.php"><i class="fa fa-times-circle-o fa-lg"></i></div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   
         <div class="menu-list">
   
             <ul id="menu-content" class="menu-content collapse out">
-                <li>
-                  <a href="#">
-                    <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                  </a>
-                </li>
-
-
                 <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-                  <a href="#"><i class="fa fa-user fa-lg"></i> Usuário <span class="arrow"></span></a>
+                  <a href="#"><i class="fa fa-cog fa-lg"></i> Administrativo <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="products">
-                    <li><a href="#">Cadastrar</a></li>
-                    <li><a href="#">Consultar</a></li>
+                    <li><a href="#">Usuários</a></li>
+                    <li><a href="#">Veiculos</a></li>
+                    <li><a href="#">Formas de Pagamento</a></li>
                 </ul>
 
 
                 <li data-toggle="collapse" data-target="#service" class="collapsed">
-                  <a href="#"><i class="fa fa-car fa-lg"></i> Veiculos <span class="arrow"></span></a>
+                  <a href="#"><i class="fa fa-user fa-lg"></i> Alterar Perfil </a>
                 </li>  
-                
-                <ul class="sub-menu collapse" id="service">
-                    <li><a href="#">Cadastrar</a></li>
-                    <li><a href="#">Consultar</a></li>
-                </ul>
 
                 <li data-toggle="collapse" data-target="#new" class="collapsed">
                   <a href="#"><i class="fa fa-check fa-lg"></i> Reserva </a>
@@ -68,14 +57,12 @@ endif;
 
                 <li>
                     <a href="#">
-                        <i class="fa fa-money fa-lg"></i> Alugar
+                        <i class="fa fa-car fa-lg"></i> Alugar
                     </a>
                 </li>
             </ul>
      </div>
 </div>
 </body>
-<?php
-    session_destroy();
-?>
+
 </html>

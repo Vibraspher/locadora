@@ -1,33 +1,73 @@
 <?php
 require_once("class.phpmailer.php");
+require_once("../conexao.php");
 
-$mail = new PHPMailer(true);
+$email = $_POST["email"];
 
-$mail->IsSMTP(); // Define que a mensagem será SMTP
- 
-try {
-    $mail->Host = 'smtp.gmail.com'; // Endereço do servidor SMTP (Autenticação, utilize o host smtp.seudomínio.com.br)
-    $mail->SMTPAuth   = true;  // Usar autenticação SMTP (obrigatório para smtp.seudomínio.com.br)
-    $mail->Port       = 587; //  Usar 587 porta SMTP
-    $mail->Username = 'edulima2412@gmail.com'; // Usuário do servidor SMTP (endereço de email)
-    $mail->Password = 'carlos18'; // Senha do servidor SMTP (senha do email usado)
+$pdo=Database::conexao();;
+$recupera = $pdo->prepare('SELECT * FROM tb_usuario WHERE email = :email');
+$recupera->bindValue(":email", $_POST['email']);
+$recupera->execute();
 
-    //Define o remetente  
-    $mail->SetFrom('edulima2412@gmail.com', 'Nome'); //Seu e-mail
-    //$mail->AddReplyTo('seu@e-mail.com.br', 'Nome'); //Seu e-mail
-    $mail->Subject = 'Assunto';//Assunto do e-mail
+$rows = $recupera->rowCount();
 
+if($rows>=1){
+    while($ln = $recupera->fetch(PDO::FETCH_ASSOC))
+    {
+        $login = $ln['login'];
+        $senha = $ln['senha'];
+        $nome = $ln['nome'];
+    }
 
-    //Define os destinatário(s)
-    $mail->AddAddress('edulima2412@gmail.com', 'Teste Locaweb');
+    $mail = new PHPMailer(true);
+    $mail->IsSMTP();
 
-    //Define o corpo do email
-    $mail->MsgHTML('teste'); 
+    try {
+        $mail->Host = 'smtp.gmail.com'; // Endereço do servidor SMTP (Autenticação, utilize o host smtp.seudomínio.com.br)
+        $mail->SMTPAuth   = true;  // Usar autenticação SMTP (obrigatório para smtp.seudomínio.com.br)
+        $mail->Port       = 465; //  Usar 587 porta SMTP
+        $mail->SMTPDebug = false;
+        $mail->SMTPSecure       = 'ssl';
+        $mail->Username = 'locarfac@gmail.com'; // Usuário do servidor SMTP (endereço de email)
+        $mail->Password = '357159FAC'; // Senha do servidor SMTP (senha do email usado)
+    
+        //Define o remetente  
+        $mail->SetFrom('no-reply@gmail.com','Locadora'); //Seu e-mail
+        $mail->Subject = 'Recuperacao de senha';//Assunto do e-mail
+    
+        //Define os destinatário(s)
+        $mail->AddAddress($email, $login);
+        
+        $msg='Ola, '.$nome.'<br /><br />Login: '.$login.'<br />Senha: '.$senha;
 
-    $mail->Send();
-    echo "Mensagem enviada com sucesso</p>\n";
+        //Define o corpo do email
+        $mail->MsgHTML($msg); 
+    
+        $mail->Send();
+        $mensagem = 'Mensagem enviada com sucesso!';
+        $location = '../index.php';
+    
+        // criar e exibir o javascript
+        echo '<script>';
+            printf("alert('%s');\n", $mensagem);
+            if (!empty($location)) {
+                printf("window.location.href = '%s'\n", $location);
+            }
+        echo '</script>';
+    
+    }catch (phpmailerException $e) {
+        echo $e->errorMessage(); //Mensagem de erro costumizada do PHPMailer
+    }
+} else {
+    $mensagem = 'Não possui email cadastrado!';
+    $location = '../index.php';
 
-}catch (phpmailerException $e) {
-    echo $e->errorMessage(); //Mensagem de erro costumizada do PHPMailer
+    // criar e exibir o javascript
+    echo '<script>';
+        printf("alert('%s');\n", $mensagem);
+        if (!empty($location)) {
+            printf("window.location.href = '%s'\n", $location);
+        }
+    echo '</script>';
 }
 ?>

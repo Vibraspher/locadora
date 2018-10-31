@@ -13,7 +13,7 @@ class Database
         $db_host = "localhost";
         $db_nome = "locadora";
         $db_usuario = "root";
-        $db_senha = "";
+        $db_senha = "1234";
         $db_driver = "mysql";
 
         try

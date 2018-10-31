@@ -6,14 +6,8 @@
     $senha = $_POST["senha"];
     $nome = $_POST["nome"];
     $email = $_POST["email"];
-    $perfil = $_POST["perfil"];
+    $perfil = 3;
     $cpf = $_POST["cpf"];
-    $logradouro = $_POST["logradouro"];
-    $numero = $_POST["numero"];
-    $bairro = $_POST["bairro"]; 
-    $cidade = $_POST["cidade"];
-    $estado = $_POST["estado"]; 
-    $cep = $_POST["cep"];
     $data = new DateTime();
     $datetime = $data->format('Y-m-d H:i:s');
     $status = "H";
@@ -39,7 +33,7 @@
 		echo '</script>';
     } else {
         try {
-            $stmt = $pdo->prepare('INSERT INTO tb_usuario VALUES(null,:perfil,:cpf,:nome,:login,:email,:senha,:logradouro,:numero,:bairro,:cidade,:estado,:cep,:data,:status)');
+            $stmt = $pdo->prepare('INSERT INTO tb_usuario VALUES(null,:perfil,:cpf,:nome,:login,:email,:senha,null,null,null,null,null,null,:data,:status)');
             $stmt->execute(array(
             ':login' => $login,
             ':senha' => $senha,
@@ -47,12 +41,6 @@
             ':email' => $email,
             ':perfil' => $perfil,
             ':cpf' => $cpf,
-            ':logradouro' => $logradouro,
-            ':numero' => $numero,
-            ':bairro' => $bairro,
-            ':cidade' => $cidade,
-            ':estado' => $estado,
-            ':cep' => $cep,
             ':data' => $datetime,
             ':status' => $status
             ));
