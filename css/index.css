@@ -32,11 +32,11 @@ button{
 }
 
 a{
-    color: brown;
+    color: green;
 }
 a:hover{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 /* MEDIAS */
