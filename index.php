@@ -24,15 +24,15 @@ session_start();
 
     <div class="container logo">
         <div class="row">
-            <img src="img/idle.png" class="img-responsive text-center" alt="Idle" width="200px" height="200px"/>
+            <img src="img/1.png" class="img-responsive text-center" alt="car"/>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
             <div class="col-md-4"></div>
-
             <div class="col-md-4">
+            <h1>Locar FAC</h1>
                 <section class="login-form">
                     <form method="POST" action="inc/validar-login.php">
                         <input type="text" name="login" placeholder="Login" class="form-control input-lg" required />
