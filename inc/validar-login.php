@@ -18,12 +18,12 @@
 			$_SESSION['senha'] = $ln['senha'];
             $_SESSION['nome'] = $ln['nome'];
 
-            header("Location: dashboard.php");
+            header("Location: ../dashboard.php");
         };
     } else {
 		// salvar os dados em variáveis
 		$mensagem = 'Usuário não cadastrado';
-		$location = 'index.php';
+		$location = '../index.php';
 
 		// criar e exibir o javascript
 		echo '<script>';

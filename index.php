@@ -34,7 +34,7 @@ session_start();
 
             <div class="col-md-4">
                 <section class="login-form">
-                    <form method="POST" action="validar-login.php">
+                    <form method="POST" action="inc/validar-login.php">
                         <input type="text" name="login" placeholder="Login" class="form-control input-lg" required />
                         <br>
                         <input type="password" name="senha" placeholder="Senha" class="form-control input-lg" id="senha" maxlength="8" required />

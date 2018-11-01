@@ -1,6 +1,6 @@
 <?php
 require_once("class.phpmailer.php");
-require_once("../conexao.php");
+require_once("conexao.php");
 
 $email = $_POST["email"];
 

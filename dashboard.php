@@ -1,12 +1,17 @@
 <?php
 session_start();
-require_once('conexao.php');
+require_once('inc/conexao.php');
 
 if(!isset($_SESSION['login']) && !isset($_SESSION['senha'])):
     header("Location: index.php");	
 endif;
-?>
 
+$pdo=Database::conexao();;
+$stmt = $pdo->prepare("SELECT * FROM tb_usuario WHERE id_usuario=:id_usuario");
+$stmt->execute(['id_usuario' => $_SESSION['id_usuario']]); 
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+$perfil = $user['id_perfil_usuario'];
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -31,37 +36,51 @@ endif;
 </head>
 <body>
 <div class="nav-side-menu">
-    <div class="brand">Olá, <?php echo $_SESSION['nome'] ?> <a href="logout.php"><i class="fa fa-times-circle-o fa-lg"></a></i></div>
+    <div class="brand">Olá, <?php echo $_SESSION['nome'] ?> <a href="inc/logout.php"><i class="fa fa-times-circle-o fa-lg"></a></i></div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   
-        <div class="menu-list">
-  
-            <ul id="menu-content" class="menu-content collapse out">
-                <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-                  <a href="#"><i class="fa fa-cog fa-lg"></i> Administrativo <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="products">
-                    <li><a href="#">Usuários</a></li>
-                    <li><a href="#">Veiculos</a></li>
-                    <li><a href="#">Formas de Pagamento</a></li>
-                </ul>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+        <?php   if($perfil == 3){ ?>
+            <li data-toggle="collapse" data-target="#service" class="collapsed">
+                <a href="#"><i class="fa fa-user fa-lg"></i> Alterar Perfil </a>
+            </li>  
 
+            <li data-toggle="collapse" data-target="#new" class="collapsed">
+                <a href="#"><i class="fa fa-check fa-lg"></i> Reserva </a>
+            </li>
 
-                <li data-toggle="collapse" data-target="#service" class="collapsed">
-                  <a href="#"><i class="fa fa-user fa-lg"></i> Alterar Perfil </a>
-                </li>  
-
-                <li data-toggle="collapse" data-target="#new" class="collapsed">
-                  <a href="#"><i class="fa fa-check fa-lg"></i> Reserva </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-car fa-lg"></i> Alugar
-                    </a>
-                </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-car fa-lg"></i> Alugar
+                </a>
+            </li>
+        <?php } else { ?>
+            <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                <a href="#"><i class="fa fa-cog fa-lg"></i> Administrativo <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="products">
+                <li><a href="usuarios.php">Usuários</a></li>
+                <li><a href="veiculos.php">Veiculos</a></li>
+                <li><a href="forma-pagamento.php">Formas de Pagamento</a></li>
             </ul>
-     </div>
+
+            <li data-toggle="collapse" data-target="#service" class="collapsed">
+                <a href="#"><i class="fa fa-user fa-lg"></i> Alterar Perfil </a>
+            </li>  
+
+            <li data-toggle="collapse" data-target="#new" class="collapsed">
+                <a href="#"><i class="fa fa-check fa-lg"></i> Reserva </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-car fa-lg"></i> Alugar
+                </a>
+            </li>
+        </ul>
+        <?php } ?>
+    </div>
 </div>
 </body>
 
