@@ -6,7 +6,7 @@ if(!isset($_SESSION['login']) && !isset($_SESSION['senha'])):
     header("Location: index.php");	
 endif;
 
-$pdo=Database::conexao();;
+$pdo=Database::conexao();
 $stmt = $pdo->prepare("SELECT * FROM tb_usuario WHERE id_usuario=:id_usuario");
 $stmt->execute(['id_usuario' => $_SESSION['id_usuario']]); 
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -63,11 +63,7 @@ $perfil = $user['id_perfil_usuario'];
                 <li><a href="usuarios.php">Usuários</a></li>
                 <li><a href="veiculos.php">Veiculos</a></li>
                 <li><a href="forma-pagamento.php">Formas de Pagamento</a></li>
-            </ul>
-
-            <li data-toggle="collapse" data-target="#service" class="collapsed">
-                <a href="#"><i class="fa fa-user fa-lg"></i> Alterar Perfil </a>
-            </li>  
+            </ul> 
 
             <li data-toggle="collapse" data-target="#new" class="collapsed">
                 <a href="#"><i class="fa fa-check fa-lg"></i> Reserva </a>
