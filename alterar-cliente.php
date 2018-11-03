@@ -38,7 +38,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
                 <h1>Alterar Usuário</h1>
                 <hr>
         
-                <form method="POST" action="inc/alterar-usuario.php?id_usuario=<?php echo $idUsuario?>">
+                <form method="POST" action="inc/alterar-cliente.php?id_usuario=<?php echo $idUsuario?>">
                     <div class="row">
                         <div class="col-md-4 col-sm-12 col-md-offset-1">
                             <div>
@@ -128,30 +128,13 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5 col-sm-12 col-md-offset-1">
-                            <div>
-                                <label>Perfil:</label>
-                                <select name="id_perfil_usuario" class="form-control" value="<?php echo $usuario['id_perfil_usuario']; ?>">
-                                <option value="1">Administrador</option>
-                                <option value="2">Funcionario</option>
-                                <option value="3">Cliente</option>
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-sm-12">
-                            <label>Status:</label>
-                            <select name="status" class="form-control" value="<?php echo $usuario['status']; ?>">
-                                <option value="H">Habilitado</option>
-                                <option value="D">Desabilitado</option>
-                            </select>
-                        </div>
                         <div class="col-md-5 botao col-md-offset-1">
                             <label></label>
                             <input type="submit" name="alterar" class="btn btn-success btn-block" value="Alterar"/>
                         </div>
                         <div class="col-md-5 botao">
                             <label></label>
-                            <a href="usuarios.php" role="button" class="btn btn-warning btn-block">Cancelar</a>
+                            <a href="dashboard.php" role="button" class="btn btn-warning btn-block">Cancelar</a>
                         </div>
                     </div>
                 </form>

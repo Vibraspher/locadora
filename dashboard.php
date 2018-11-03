@@ -43,7 +43,7 @@ $perfil = $user['id_perfil_usuario'];
         <ul id="menu-content" class="menu-content collapse out">
         <?php   if($perfil == 3){ ?>
             <li data-toggle="collapse" data-target="#service" class="collapsed">
-                <a href="#"><i class="fa fa-user fa-lg"></i> Alterar Perfil </a>
+                <a href="alterar-cliente.php?id_usuario=<?php echo $_SESSION['id_usuario']?>"><i class="fa fa-user fa-lg"></i> Alterar Perfil </a>
             </li>  
 
             <li data-toggle="collapse" data-target="#new" class="collapsed">
