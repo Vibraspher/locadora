@@ -26,7 +26,7 @@ $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="row">
             <div class=" col-md-3 col-sm-12 col-md-offset-3">
-                <a href="categorias-criar.php" class="btn btn-info btn-block" id="insert">Cadastrar Usuário</a>
+                <a href="usuario-criar.php" class="btn btn-info btn-block" id="insert">Cadastrar Usuário</a>
             </div>
         </div>
 
@@ -34,7 +34,7 @@ $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-8 col-sm-12 col-md-offset-3">
                 <table class="table table-hover">
                     <thead>
-                    <tr height=30%>
+                    <tr>
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>Perfil</th>
@@ -54,12 +54,12 @@ $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php if($linha['logradouro']==null){?>
                             <td></td>
                         <?php }else{?>
-                            <td><?php echo $linha['logradouro']. ', '. $linha['numero']. ' '.$linha['bairro'].' - '.$linha['cidade'].'/'.$linha['estado'] ?></td>
+                            <td><?php echo $linha['logradouro']. ', '. $linha['numero']. ' '.$linha['bairro'].' - '.$linha['cidade'].'/'.$linha['estado'] .' '.$linha['cep']?></td>
                         <?php }?>
                         <td><?php echo $linha['status'] ?></td>
                         <td>
-                            <a href="categorias-editar.php?id=<?php echo $linha['id_forma_pagamento'] ?>" class="btn btn-info"><span class="glyphicon glyphicon-cog"></span></a>
-                            <a href="categorias-excluir-post.php?id=<?php echo $linha['id_forma_pagamento'] ?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                            <a href="usuario-alterar.php?id_usuario=<?php echo $linha['id_usuario'] ?>" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-cog"></span></a>
+                            <a href="inc/excluir-usuario.php?id_usuario=<?php echo $linha['id_usuario']?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                         </td>
                         </tr>
                     <?php endforeach ?>

@@ -8,11 +8,15 @@ h1{
 
 @media (max-width: 575.98px) {
     h1 {
-      font-size: 30px;
-      text-align: center;
-    }
-    div table.table.table-hover{
-        font-size: 8px;
-    }
-
+        font-size: 30px;
+        text-align: center;
+      }
+  
+      div table.table.table-hover{
+          font-size: 7px;
+      }
+  
+      span{
+          font-size: 10px;
+      }
 }
