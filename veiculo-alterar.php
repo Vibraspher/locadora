@@ -15,19 +15,19 @@ $veiculo = $stmt->fetch(PDO::FETCH_ASSOC);
 <html lang="pt-br">
 <head>
     <style>
-        .botao{
-            margin-top: 5px;
-        }
+    .botao{
+        margin-top: 5px;
+    }
 
-        @media (max-width: 575.98px) {
-            h1 {
-                text-align: center;
-            }
-            .botao{
-                margin-top: -5px;;
-            }
+    @media (max-width: 575.98px) {
+        h1 {
+            text-align: center;
         }
-    </style>
+        .botao{
+            margin-top: -5px;;
+        }
+    }
+</style>
 </head>
 <body>
     <div class="container-fluid">
@@ -36,7 +36,7 @@ $veiculo = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="col-md-7 col-sm-12 col-md-offset-4">
                 <h1>Alterar Veiculo</h1>
                 <hr>
-        
+
                 <form method="POST" action="inc/alterar-veiculo.php?id_veiculo=<?php echo $idVeiculo?>">
                     <div class="row">
                         <div class="col-md-4 col-sm-12 col-md-offset-2">
@@ -69,21 +69,21 @@ $veiculo = $stmt->fetch(PDO::FETCH_ASSOC);
                     <div class="row">
                         <div class="col-md-4 col-sm-12 col-md-offset-2">
                             <div>
-                                <label>Categoria:</label>
+                                <label>Categoria:</label><?php $categoria = $veiculo['id_categoria']; ?>
                                 <select name="id_categoria" class="form-control" value="<?php echo $veiculo['id_categoria']; ?>">
-                                <option value="1">Economico</option>
-                                <option value="2">Compacto</option>
-                                <option value="3">Utilitario</option>
-                                <option value="4">Full-Size</option>
-                                <option value="5">Luxo</option>
-                            </select>
+                                    <option value="1" <?=($categoria == "1")?'selected':''?>>Economico</option>
+                                    <option value="2" <?=($categoria == "2")?'selected':''?>>Compacto</option>
+                                    <option value="3" <?=($categoria == "3")?'selected':''?>>Utilitario</option>
+                                    <option value="4" <?=($categoria == "4")?'selected':''?>>Full-Size</option>
+                                    <option value="5" <?=($categoria == "5")?'selected':''?>>Luxo</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12">
-                            <label>Status:</label>
+                            <label>Status:</label><?php $status = $veiculo['status']; ?>
                             <select name="status" class="form-control" value="<?php echo $veiculo['status']; ?>">
-                                <option value="H" selected>Habilitado</option>
-                                <option value="D">Desabilitado</option>
+                                <option value="H" <?=($status == "H")?'selected':''?>>Habilitado</option>
+                                <option value="D" <?=($status == "D")?'selected':''?>>Desabilitado</option>
                             </select>
                         </div>
                         <div class="col-md-4 botao col-md-offset-2">

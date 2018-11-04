@@ -13,21 +13,21 @@ $pagamento = $stmt->fetch(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<style>
-        .botao{
-            margin-top: 5px;
-        }
+    <style>
+    .botao{
+        margin-top: 5px;
+    }
 
-        @media (max-width: 575.98px) {
-            h1 {
-                font-size: 20px;
-                text-align: center;
-            }
-            .botao{
-                margin-top: -5px;;
-            }
+    @media (max-width: 575.98px) {
+        h1 {
+            font-size: 20px;
+            text-align: center;
         }
-    </style>
+        .botao{
+            margin-top: -5px;;
+        }
+    }
+</style>
 </head>
 <body>
     <div class="container-fluid">
@@ -36,7 +36,7 @@ $pagamento = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="col-md-7 col-sm-12 col-md-offset-4">
                 <h1>Alterar Forma de Pagamento</h1>
                 <hr>
-        
+
                 <form method="POST" action="inc/alterar-pagamento.php?id_forma_pagamento=<?php echo $idPagamento?>">
                     <div class="row">
                         <div class="col-md-3 col-sm-12">
@@ -46,10 +46,10 @@ $pagamento = $stmt->fetch(PDO::FETCH_ASSOC);
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12">
-                            <label>Status:</label>
+                            <label>Status:</label><?php $status = $pagamento['status']; ?>
                             <select name="status" class="form-control" value="<?php echo $pagamento['status']; ?>">
-                                <option value="H" selected>Habilitado</option>
-                                <option value="D">Desabilitado</option>
+                                <option value="H" <?=($status == "H")?'selected':''?>>Habilitado</option>
+                                <option value="D" <?=($status == "D")?'selected':''?>>Desabilitado</option>
                             </select>
                         </div>
                         <div class="col-md-2 botao">

@@ -6,7 +6,7 @@ $idUsuario = $_GET["id_usuario"];
 
 $pdo=Database::conexao();
 $stmt = $pdo->prepare('SELECT * FROM tb_usuario WHERE id_usuario = :id_usuario
-                      ');
+  ');
 $stmt->bindParam(':id_usuario', $idUsuario);   
 $stmt->execute();
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -16,19 +16,19 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 <html lang="pt-br">
 <head>
     <style>
-        .botao{
-            margin-top: 5px;
-        }
+    .botao{
+        margin-top: 5px;
+    }
 
-        @media (max-width: 575.98px) {
-            h1 {
-                text-align: center;
-            }
-            .botao{
-                margin-top: -5px;;
-            }
+    @media (max-width: 575.98px) {
+        h1 {
+            text-align: center;
         }
-    </style>
+        .botao{
+            margin-top: -5px;;
+        }
+    }
+</style>
 </head>
 <body>
     <div class="container-fluid">
@@ -37,7 +37,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="col-md-7 col-sm-12 col-md-offset-4">
                 <h1>Alterar Usuário</h1>
                 <hr>
-        
+
                 <form method="POST" action="inc/alterar-cliente.php?id_usuario=<?php echo $idUsuario?>">
                     <div class="row">
                         <div class="col-md-4 col-sm-12 col-md-offset-1">
@@ -88,35 +88,35 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <div>
-                                <label>Estado:</label>
+                                <label>Estado:</label><?php $estado = $usuario['estado']; ?>
                                 <select name="estado" class="form-control" value="<?php echo $usuario['estado'];?>">
-                                    <option value="AC">Acre</option>
-                                    <option value="AL">Alagoas</option>
-                                    <option value="AP">Amapá</option>
-                                    <option value="AM">Amazonas</option>
-                                    <option value="BA">Bahia</option>
-                                    <option value="CE">Ceará</option>
-                                    <option value="DF">Distrito Federal</option>
-                                    <option value="ES">Espírito Santo</option>
-                                    <option value="GO">Goiás</option>
-                                    <option value="MA">Maranhão</option>
-                                    <option value="MT">Mato Grosso</option>
-                                    <option value="MS">Mato Grosso do Sul</option>
-                                    <option value="MG">Minas Gerais</option>
-                                    <option value="PA">Pará</option>
-                                    <option value="PB">Paraíba</option>
-                                    <option value="PR">Paraná</option>
-                                    <option value="PE">Pernambuco</option>
-                                    <option value="PI">Piauí</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="RN">Rio Grande do Norte</option>
-                                    <option value="RS">Rio Grande do Sul</option>
-                                    <option value="RO">Rondônia</option>
-                                    <option value="RR">Roraima</option>
-                                    <option value="SC">Santa Catarina</option>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="SE">Sergipe</option>
-                                    <option value="TO">Tocantins</option>
+                                    <option value="AC" <?=($estado == "AC")?'selected':''?>>Acre</option>
+                                    <option value="AL" <?=($estado == "AL")?'selected':''?>>Alagoas</option>
+                                    <option value="AP" <?=($estado == "AP")?'selected':''?>>Amapá</option>
+                                    <option value="AM" <?=($estado == "AM")?'selected':''?>>Amazonas</option>
+                                    <option value="BA" <?=($estado == "BA")?'selected':''?>>Bahia</option>
+                                    <option value="CE" <?=($estado == "CE")?'selected':''?>>Ceará</option>
+                                    <option value="DF" <?=($estado == "DF")?'selected':''?>>Distrito Federal</option>
+                                    <option value="ES" <?=($estado == "ES")?'selected':''?>>Espírito Santo</option>
+                                    <option value="GO" <?=($estado == "GO")?'selected':''?>>Goiás</option>
+                                    <option value="MA" <?=($estado == "MA")?'selected':''?>>Maranhão</option>
+                                    <option value="MT" <?=($estado == "MT")?'selected':''?>>Mato Grosso</option>
+                                    <option value="MS" <?=($estado == "MS")?'selected':''?>>Mato Grosso do Sul</option>
+                                    <option value="MG" <?=($estado == "MG")?'selected':''?>>Minas Gerais</option>
+                                    <option value="PA" <?=($estado == "PA")?'selected':''?>>Pará</option>
+                                    <option value="PB" <?=($estado == "PB")?'selected':''?>>Paraíba</option>
+                                    <option value="PR" <?=($estado == "PR")?'selected':''?>>Paraná</option>
+                                    <option value="PE" <?=($estado == "PE")?'selected':''?>>Pernambuco</option>
+                                    <option value="PI" <?=($estado == "PI")?'selected':''?>>Piauí</option>
+                                    <option value="RJ" <?=($estado == "RJ")?'selected':''?>>Rio de Janeiro</option>
+                                    <option value="RN" <?=($estado == "RN")?'selected':''?>>Rio Grande do Norte</option>
+                                    <option value="RS" <?=($estado == "RS")?'selected':''?>>Rio Grande do Sul</option>
+                                    <option value="RO" <?=($estado == "RO")?'selected':''?>>Rondônia</option>
+                                    <option value="RR" <?=($estado == "RR")?'selected':''?>>Roraima</option>
+                                    <option value="SC" <?=($estado == "SC")?'selected':''?>>Santa Catarina</option>
+                                    <option value="SP" <?=($estado == "SP")?'selected':''?>>São Paulo</option>
+                                    <option value="SE" <?=($estado == "SE")?'selected':''?>>Sergipe</option>
+                                    <option value="TO" <?=($estado == "TO")?'selected':''?>>Tocantins</option>
                                 </select>
                             </div>
                         </div>
